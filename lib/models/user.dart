@@ -1,6 +1,8 @@
-import 'package:FlutterGalleryApp/string_util.dart';
 
-class User {
+
+import '../string_util.dart';
+
+class User with UserUtils {
   String email;
   String phone;
 
@@ -69,7 +71,7 @@ class User {
     }
   }
 
-  String get name => "${_firstName.capitalize()} ${_lastName.capitalize()}";
+  String get name => "${capitalize(_firstName)} ${capitalize(_lastName)}";
 
   void addFriends(Iterable<User> newFriends) {
     friends.addAll(newFriends);
