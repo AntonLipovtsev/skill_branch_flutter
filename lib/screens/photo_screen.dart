@@ -3,18 +3,19 @@ import 'package:FlutterGalleryApp/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// https://skill-branch.ru/img/speakers/Adechenko.jpg
+
 class FullScreenImage extends StatefulWidget {
   FullScreenImage(
-      {String altDescription, String userName, String name, Key key})
-      : super(key: key) {
-    this.altDescription = altDescription;
-    this.userName = userName;
-    this.name = name;
-  }
+      {this.altDescription, this.userName, this.name, this.photo, this.userPhoto, this.heroTag, Key key})
+      : super(key: key);
 
-  String altDescription;
-  String userName;
-  String name;
+  final String altDescription;
+  final String userName;
+  final String name;
+  final String photo;
+  final String userPhoto;
+  final String heroTag;
 
   @override
   State<StatefulWidget> createState() {
@@ -23,10 +24,12 @@ class FullScreenImage extends StatefulWidget {
 }
 
 class _FullScreenImageState extends State<FullScreenImage> {
-
   String altDescription;
   String userName;
   String name;
+  String photo;
+  String userPhoto;
+  String heroTag;
 
   @override
   void initState() {
@@ -35,6 +38,9 @@ class _FullScreenImageState extends State<FullScreenImage> {
     altDescription = widget.altDescription;
     userName = widget.userName;
     name = widget.name;
+    photo = widget.photo;
+    userPhoto = widget.userPhoto;
+    heroTag = widget.heroTag;
   }
 
   @override
@@ -58,7 +64,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
                 onPressed: () {}),
           ),
           Photo(
-              photoLink: 'https://skill-branch.ru/img/speakers/Adechenko.jpg'),
+              photoLink: photo),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Column(
@@ -70,13 +76,12 @@ class _FullScreenImageState extends State<FullScreenImage> {
                   overflow: TextOverflow.ellipsis,
                   style: AppStyles.h3,
                 ),
-
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
                   child: Row(
                     children: <Widget>[
                       UserAvatar(
-                          'https://skill-branch.ru/img/speakers/Adechenko.jpg'),
+                          userPhoto),
                       SizedBox(
                         width: 6,
                       ),
@@ -91,7 +96,6 @@ class _FullScreenImageState extends State<FullScreenImage> {
                     ],
                   ),
                 ),
-
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -100,9 +104,9 @@ class _FullScreenImageState extends State<FullScreenImage> {
                       ),
                       flex: 1,
                     ),
-
-                    SizedBox(width: 5,),
-
+                    SizedBox(
+                      width: 5,
+                    ),
                     Expanded(
                       child: GestureDetector(
                         onTap: () {},
@@ -110,17 +114,21 @@ class _FullScreenImageState extends State<FullScreenImage> {
                           alignment: Alignment.center,
                           width: 105,
                           height: 36,
-                          decoration: BoxDecoration(color: AppColors.dodgerBlue,
+                          decoration: BoxDecoration(
+                              color: AppColors.dodgerBlue,
                               borderRadius: BorderRadius.circular(7)),
-                          child: Text('Save', style: AppStyles.h4.copyWith(
-                              color: AppColors.white),),
+                          child: Text(
+                            'Save',
+                            style:
+                                AppStyles.h4.copyWith(color: AppColors.white),
+                          ),
                         ),
                       ),
                       flex: 1,
                     ),
-
-                    SizedBox(width: 5,),
-
+                    SizedBox(
+                      width: 5,
+                    ),
                     Expanded(
                       child: GestureDetector(
                         onTap: () {},
@@ -128,10 +136,14 @@ class _FullScreenImageState extends State<FullScreenImage> {
                           alignment: Alignment.center,
                           width: 105,
                           height: 36,
-                          decoration: BoxDecoration(color: AppColors.dodgerBlue,
+                          decoration: BoxDecoration(
+                              color: AppColors.dodgerBlue,
                               borderRadius: BorderRadius.circular(7)),
-                          child: Text('Visit', style: AppStyles.h4.copyWith(
-                              color: AppColors.white),),
+                          child: Text(
+                            'Visit',
+                            style:
+                                AppStyles.h4.copyWith(color: AppColors.white),
+                          ),
                         ),
                       ),
                       flex: 1,
@@ -148,7 +160,6 @@ class _FullScreenImageState extends State<FullScreenImage> {
 }
 
 class NameWidget extends StatelessWidget {
-
   NameWidget(this.name);
 
   final String name;
@@ -163,7 +174,6 @@ class NameWidget extends StatelessWidget {
 }
 
 class NickNameWidget extends StatelessWidget {
-
   NickNameWidget(this.userName);
 
   final String userName;
